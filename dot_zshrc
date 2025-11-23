@@ -39,6 +39,27 @@ setopt globdots
 export EDITOR=nvim
 
 
+##### ==== fzf 基本設定 ==== #####
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
+export FZF_DEFAULT_OPTS="
+  --height 40% --reverse --border=sharp --margin=0,1
+  --prompt=' ' --color=light
+"
+
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
+export FZF_CTRL_T_OPTS="
+  --preview 'bat --color=always --style=header,grid {}'
+  --preview-window=right:60%
+"
+
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'
+"
+
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
+
 ##### ==== completion 用パス（fpath に統一） ==== #####
 
 fpath=(
@@ -49,38 +70,38 @@ fpath=(
 )
 
 
-##### ==== zsh-autocomplete（compinit 含む） ==== #####
+##### ==== 標準補完システム (compinit) ==== #####
 
-# Homebrew で入れてる想定: brew install zsh-autocomplete
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+autoload -Uz compinit
+compinit
 
-# 大文字小文字ゆるく無視
+
+##### ==== fzf-tab (Tab 補完 → fzf UI) ==== #####
+
+# fzf-tab 本体（このパスは自分の環境に合わせて変えてOK）
+# 例: git clone https://github.com/Aloxaf/fzf-tab.git ~/.zsh/plugins/fzf-tab
+source "$HOME/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
+
+# 基本的な fzf-tab の挙動（お好み調整ポイント）
+# グループ（ファイル/ディレクトリとか）間の移動
+zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'
+
+# プレビュー設定の例（ls - やファイル補完時など）
+zstyle ':fzf-tab:complete:*:*' fzf-preview '[[ -d $realpath ]] && eza -la --color=always --icons=always --group-directories-first -- $realpath || bat --color=always --style=header,grid --line-range=:200 -- $realpath'
+
+# 補完候補が多いときも fzf-tab に任せる
+zstyle ':completion:*' menu no
+# 大文字小文字をゆるく無視
 zstyle ':completion:*' matcher-list \
   'm:{a-z}={A-Z}' \
   'm:{a-zA-Z}={a-zA-Z} r:|[._-]=* r:|=*'
-
-# 補完後に勝手にスペースを入れない（Tabサイクル時に単語が増殖しないように）
-zstyle ':autocomplete:*' add-space
-
-# --- Tab の流儀を zsh-autocomplete 公式スタイルで上書き --- 
-# 1. コマンドライン上で Tab / Shift-Tab を押すと「メニュー」に入る
-bindkey              '^I'         menu-select
-bindkey "$terminfo[kcbt]" menu-select
-
-# 2. メニューの中では Tab / Shift-Tab で候補サイクル
-bindkey -M menuselect              '^I'         menu-complete
-bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
-
-# 3. メニュー中でも Enter でそのまま実行できるように（好みだけど便利）
-bindkey -M menuselect '^M' .accept-line
 
 
 ##### ==== AWS CLI 補完（bashcompinit 経由） ==== #####
 
 autoload -Uz bashcompinit
 bashcompinit
-
-# aws_completer の場所は `which aws_completer` で確認して必要なら修正
+# aws_completer のパスは `which aws_completer` で確認して必要なら修正
 complete -C '/usr/local/bin/aws_completer' aws
 
 
@@ -115,27 +136,6 @@ fi
 
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || \
   source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
-
-
-##### ==== fzf ==== #####
-
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
-export FZF_DEFAULT_OPTS="
-  --height 40% --reverse --border=sharp --margin=0,1
-  --prompt=' ' --color=light
-"
-
-export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
-export FZF_CTRL_T_OPTS="
-  --preview 'bat --color=always --style=header,grid {}'
-  --preview-window=right:60%
-"
-
-export FZF_CTRL_R_OPTS="
-  --preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'
-"
-
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 
 ##### ==== alias / 関数 ==== #####
