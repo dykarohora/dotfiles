@@ -1,0 +1,240 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](fg:#333333 bg:#333333)\
+[](fg:#4b3a2f bg:#333333)\
+[](fg:#86624c bg:#4b3a2f)\
+[](fg:#c08b6a bg:#86624c)\
+[](fg:color_peach bg:#c08b6a)\
+$os\
+$username\
+[](fg:color_peach)\
+[](fg:color_yellow)\
+$directory\
+[](fg:color_yellow)\
+[](fg:color_green)\
+$git_branch\
+[](fg:color_green)\
+$git_status\
+$git_metrics\
+$fill\
+[ ](fg:color_blue)\
+$docker_context\
+$memory_usage\
+[](fg:color_blue)\
+[](fg:color_lavender)\
+$battery\
+[](fg:color_lavender)\
+$line_break$character
+"""
+
+right_format = """
+$cmd_duration
+$c\
+$cpp\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$time
+"""
+
+palette = 'macchiato'
+
+[palettes.macchiato]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_rosewater = '#f4dbd6'
+color_flamingo = '#f0c6c6'
+color_pink = '#f5bde6'
+color_mauve = '#c6a0f6'
+color_red = '#ed8796'
+color_maroon = '#ee99a0'
+color_peach = '#f5a97f'
+color_yellow = '#eed49f'
+color_green = '#a6da95'
+color_teal = '#8bd5ca'
+color_sky = '#91d7e3'
+color_sapphire = '#7dc4e4'
+color_blue = '#8aadf4'
+color_lavender = '#b7bdf8'
+color_text = '#cad3f5'
+color_subtext1 = '#b8c0e0'
+color_subtext0 = '#a5adcb'
+color_overlay2 = '#939ab7'
+color_overlay1 = '#8087a2'
+color_overlay0 = '#6e738d'
+color_surface2 = '#5b6078'
+color_surface1 = '#494d64'
+color_surface0 = '#363a4f'
+color_base = '#24273a'
+color_mantle = '#1e2030'
+color_crust = '#181926'
+color_white = '#eff1f5'
+
+[os]
+disabled = false
+style = "bg:color_peach fg:color_surface0"
+
+# This is the default symbols table.
+[os.symbols]
+Linux = " "
+Macos = " "
+Windows = " "
+
+[username]
+show_always = true
+style_user = "bg:color_peach fg:color_surface0"
+style_root = "bg:color_peach fg:color_surface0"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_surface0 bg:color_yellow"
+truncation_length = 3
+truncation_symbol = "../"
+truncate_to_repo = false
+home_symbol = ' ~' # nf-costum-home
+read_only = ' 󰌾 ' # nf-md-lock
+read_only_style = 'fg:#f7768e bg:color_yellow'
+format = '[ $path ]($style)[$read_only ]($read_only_style)'
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = '   ' # nf-fa-github_alt, nf-fa-code_fork
+format = '[[ $symbol $branch ](fg:color_surface0 bg:color_green)]($style)'
+
+[git_status]
+style = 'fg:color_yellow'
+conflicted = '='
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕'
+up_to_date = '✓'
+untracked = '?'
+stashed = '$'
+modified = '!${count}'
+renamed = '»'
+deleted = '✘'
+format = '([ \[$all_status$ahead_behind\] ]($style))'
+
+[git_metrics]
+added_style = 'fg:color_green'
+deleted_style = 'fg:color_red'
+format = '[+$added]($added_style)/[-$deleted ]($deleted_style)'
+disabled = false
+
+[fill]
+symbol = '─'
+style = 'blue'
+
+[memory_usage]
+threshold = -1
+style = 'fg:color_surface0 bg:color_blue'
+format = '[ 󰍛 ${ram} ]($style)'
+disabled = false
+
+[battery]
+disabled = false
+format = '[ $symbol$percentage ]($style)'
+
+[[battery.display]]
+threshold = 100
+style= 'fg:color_surface0 bg:color_lavender'
+
+[nodejs]
+symbol = " "
+style = "bg:color_blue"
+format = '[[  $symbol( $version) ](fg:color_fg0)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[cpp]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[rust]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[golang]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[php]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[java]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[kotlin]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[python]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[conda]
+style = "bg:color_bg3"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[pixi]
+style = "bg:color_bg3"
+format = '[[ $symbol( $version)( $environment) ](fg:color_fg0 bg:color_bg3)]($style)'
+
+[time]
+disabled = false
+style = 'fg:#73daca'
+format = '[    $time]($style)' 
+time_format = '%R'
+utc_time_offset = '+9'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[.. ](bold fg:color_rosewater)'
+error_symbol = '[󰳭 󰇴 󰳭 ](bold fg:color_red)'
+vimcmd_symbol = '[❮](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:color_purple)'
+vimcmd_replace_symbol = '[❮](bold fg:color_purple)'
+vimcmd_visual_symbol = '[❮](bold fg:color_yellow)'
+
+[cmd_duration]
+min_time = 1
+style = 'fg:color_pink'
+format = "[  󰄉 $duration]($style)" 
