@@ -14,23 +14,4 @@ return {
 			vim.keymap.set("n", "<leader>cc", "<Cmd>ClaudeCode<CR>")
 		end,
 	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				panel = {
-					enabled = false,
-				},
-				suggestion = {
-					enabled = false,
-				},
-				filetypes = {
-					markdown = true,
-					help = true,
-				},
-			})
-		end,
-	},
 }
