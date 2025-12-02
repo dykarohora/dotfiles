@@ -43,6 +43,7 @@ return {
 	},
 	{
 		"j-hui/fidget.nvim",
+		event = "LspAttach",
 		opts = {},
 	},
 	{
@@ -56,6 +57,7 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
+		event = "BufWritePre",
 		config = function()
 			local web_formatter = { "biome-check", stop_after_first = true }
 			require("conform").setup({
