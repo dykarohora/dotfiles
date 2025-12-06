@@ -83,8 +83,8 @@ style = "bg:color_peach fg:color_surface0"
 
 # This is the default symbols table.
 [os.symbols]
-Linux = " "
-Macos = " "
+Linux = "🐧"
+Macos = "🍏"
 Windows = " "
 
 [username]
@@ -98,17 +98,17 @@ style = "fg:color_surface0 bg:color_yellow"
 truncation_length = 3
 truncation_symbol = "../"
 truncate_to_repo = false
-home_symbol = ' ~' # nf-costum-home
-read_only = ' 󰌾 ' # nf-md-lock
+home_symbol = '🏠️~'
+read_only = '🔐' # nf-md-lock
 read_only_style = 'fg:#f7768e bg:color_yellow'
 format = '[ $path ]($style)[$read_only ]($read_only_style)'
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
+"Documents" = "📄"
+"Downloads" = "⬇️"
+"Music" = "🎵"
+"Pictures" = "🗺️"
+"Developer" = "🛠"
 
 [git_branch]
 symbol = '   ' # nf-fa-github_alt, nf-fa-code_fork
@@ -116,16 +116,17 @@ format = '[[ $symbol $branch ](fg:color_surface0 bg:color_green)]($style)'
 
 [git_status]
 style = 'fg:color_yellow'
-conflicted = '='
-ahead = '⇡${count}'
-behind = '⇣${count}'
-diverged = '⇕'
-up_to_date = '✓'
-untracked = '?'
-stashed = '$'
-modified = '!${count}'
-renamed = '»'
-deleted = '✘'
+conflicted = '💥($count)'
+ahead = '🚀($count)'
+behind = '🐢($count)'
+diverged = '🔀(↑${ahead_count} ↓${behind_count})'
+up_to_date = '🟢'
+untracked = '👶($count)'
+stashed = '📦($count)'
+modified = '📝($count)'
+staged = '🧩($count)'
+renamed = '🏷️($count)'
+deleted = '(❌$count)'
 format = '([ \[$all_status$ahead_behind\] ]($style))'
 
 [git_metrics]
