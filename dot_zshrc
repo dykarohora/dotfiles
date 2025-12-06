@@ -20,9 +20,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# AWS
-export AWS_PROFILE=admin
-
 # history
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000
