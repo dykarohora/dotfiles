@@ -2,10 +2,10 @@ return {
 	"stevearc/overseer.nvim",
 	version = "1.6.*",
 	keys = {
-		{ "<leader>or", "<CMD>OverseerRun<CR>" },
-		{ "<leader>ot", "<CMD>OverseerToggle<CR>" },
-		{ "<leader>rt" },
-		{ "<leader>rc" },
+		{ "<leader>oa", "<CMD>OverseerRun<CR>", desc = "Run" },
+		{ "<leader>ob", "<CMD>OverseerToggle<CR>", desc = "Toggle" },
+		{ "<leader>oc", desc = "Run cpp" },
+		{ "<leader>ot", desc = "Run by tsx" },
 	},
 	config = function()
 		require("overseer").setup({

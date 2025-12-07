@@ -26,12 +26,14 @@ return {
 				callback = function(ev)
 					local opts = { buffer = ev.buf }
 
+					vim.keymap.set("n", "<leader>lf", "<cmd>Lspsaga finder<CR>", opts)
 					vim.keymap.set("n", "<leader>j", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 					vim.keymap.set("n", "<leader>k", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 					vim.keymap.set("n", "<leader>.", "<cmd>Lspsaga code_action<CR>", opts)
-
+					vim.keymap.set("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", opts)
+					vim.keymap.set("n", "<leader>lb", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
+					vim.keymap.set("n", "<leader>lo", "<cmd>Lspsaga outline<CR>", opts)
 					vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-					vim.keymap.set("n", "<leader>rr", "<cmd>Lspsaga rename<CR>", opts)
 				end,
 			})
 		end,

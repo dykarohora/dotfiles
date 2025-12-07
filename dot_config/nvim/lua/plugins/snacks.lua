@@ -23,13 +23,6 @@ return {
 			desc = "Open Explorer",
 		},
 		{
-			"<leader>fg",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
-		{
 			"<leader>:",
 			function()
 				Snacks.picker.command_history()
@@ -66,6 +59,13 @@ return {
 			desc = "Find Files",
 		},
 		{
+			"<leader>fg",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Grep",
+		},
+		{
 			"<leader>fp",
 			function()
 				Snacks.picker.projects()
@@ -78,49 +78,6 @@ return {
 				Snacks.picker.recent()
 			end,
 			desc = "Recent",
-		},
-		-- git
-		{
-			"<leader>gb",
-			function()
-				Snacks.picker.git_branches()
-			end,
-			desc = "Git Branches",
-		},
-		{
-			"<leader>gL",
-			function()
-				Snacks.picker.git_log_line()
-			end,
-			desc = "Git Log Line",
-		},
-		{
-			"<leader>gs",
-			function()
-				Snacks.picker.git_status()
-			end,
-			desc = "Git Status",
-		},
-		{
-			"<leader>gS",
-			function()
-				Snacks.picker.git_stash()
-			end,
-			desc = "Git Stash",
-		},
-		{
-			"<leader>gd",
-			function()
-				Snacks.picker.git_diff()
-			end,
-			desc = "Git Diff (Hunks)",
-		},
-		{
-			"<leader>gf",
-			function()
-				Snacks.picker.git_log_file()
-			end,
-			desc = "Git Log File",
 		},
 		-- Grep
 		{
@@ -292,13 +249,6 @@ return {
 				Snacks.picker.undo()
 			end,
 			desc = "Undo History",
-		},
-		{
-			"<leader>uC",
-			function()
-				Snacks.picker.colorschemes()
-			end,
-			desc = "Colorschemes",
 		},
 	},
 }
