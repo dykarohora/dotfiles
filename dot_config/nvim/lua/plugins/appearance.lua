@@ -156,4 +156,12 @@ return {
 		event = "VeryLazy",
 		opts = {},
 	},
+	{
+		"tadaa/vimade",
+		event = "BufRead",
+		opts = {
+			recipe = { "default", { animate = true } },
+			fadelevel = 0.7,
+		},
+	},
 }
