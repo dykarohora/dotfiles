@@ -3,7 +3,6 @@
 export PATH="$PATH:./node_modules/.bin"
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 export PATH="/usr/local/smlnj/bin:$PATH"
-export PATH="$HOME/.claude/local/claude:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 export KAGGLE_CONFIG_DIR="$HOME/kaggle-project/config"
@@ -150,9 +149,6 @@ if command -v eza >/dev/null 2>&1; then
   alias lg='eza -la --git'
 fi
 
-# claude
-alias claude="$HOME/.claude/local/claude"
-
 # Yazi
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -161,3 +157,6 @@ function y() {
   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
+
+# Git Graph
+alias gg="git-graph"
