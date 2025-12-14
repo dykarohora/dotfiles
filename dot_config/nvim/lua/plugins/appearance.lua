@@ -164,4 +164,27 @@ return {
 			fadelevel = 0.7,
 		},
 	},
+	{
+		"shortcuts/no-neck-pain.nvim",
+		version = "*",
+
+		keys = {
+			{ "<leader>uz", "<cmd>NoNeckPain<CR>", desc = "NoNeckPain toggle" },
+		},
+
+		opts = {
+			width = 100,
+			autocmds = {
+				skipEnteringNoNeckPainBuffer = true,
+				reloadOnColorSchemeChange = false,
+			},
+		},
+
+		config = function(_, opts)
+			require("no-neck-pain").setup(opts)
+
+			vim.keymap.set("n", "<leader>u+", "<cmd>NoNeckPainWidthUp<CR>", { desc = "NoNeckPain width up" })
+			vim.keymap.set("n", "<leader>u-", "<cmd>NoNeckPainWidthDown<CR>", { desc = "NoNeckPain width down" })
+		end,
+	},
 }
