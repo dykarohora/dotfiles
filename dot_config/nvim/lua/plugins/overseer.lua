@@ -44,7 +44,7 @@ return {
 			})
 		end
 
-		vim.keymap.set("n", "<leader>rt", run_tsx_split, { desc = "Run TS with split" })
+		vim.keymap.set("n", "<leader>ot", run_tsx_split, { desc = "Run TS with split" })
 
 		local function run_cpp_split()
 			if vim.bo.filetype ~= "cpp" then
@@ -61,6 +61,6 @@ return {
 			})
 		end
 
-		vim.keymap.set("n", "<leader>rc", run_cpp_split, { desc = "Run C++ with split" })
+		vim.keymap.set("n", "<leader>oc", run_cpp_split, { desc = "Run C++ with split" })
 	end,
 }
