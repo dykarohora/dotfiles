@@ -1,38 +1,79 @@
+-- Treesitter
 return {
-  -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    main = 'nvim-treesitter.configs',
-    opts = {
-      highlight = { enable = true },
-    }, 
-  }, 
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    event = "CursorMoved",
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = { "BufNewFile", "BufReadPre" },
-    opts = {
-      enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-      multiwindow = false, -- Enable multiwindow support.
-      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-      min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-      line_numbers = true,
-      multiline_threshold = 20, -- Maximum number of lines to show for a single context
-      trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-      mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
-      -- Separator between context and content. Should be a single character string, like '-'.
-      -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-      separator = nil,
-      zindex = 20, -- The Z-index of the context window
-      on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching 
-    },
-  }
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		main = "nvim-treesitter.configs",
+		opts = {
+			-- 必要な言語は好きに増やしてOK
+			ensure_installed = {
+				"lua",
+				"vim",
+				"vimdoc",
+				"javascript",
+				"typescript",
+				"tsx",
+				"rust",
+				"json",
+				"html",
+				"css",
+			},
+
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
+
+			indent = {
+				enable = true,
+			},
+
+			-- textobjects の設定ここに書く
+			textobjects = {
+				select = {
+					enable = true,
+					lookahead = true, -- `af` / `if` みたいなのを次の対象にジャンプしながら選択する
+					keymaps = {
+						-- 例: 関数・クラス単位の選択
+						["af"] = "@function.outer",
+						["if"] = "@function.inner",
+						["ac"] = "@class.outer",
+						["ic"] = "@class.inner",
+					},
+				},
+				move = {
+					enable = true,
+					set_jumps = true,
+					goto_next_start = {
+						["]m"] = "@function.outer",
+					},
+					goto_previous_start = {
+						["[m"] = "@function.outer",
+					},
+				},
+			},
+		},
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		event = { "BufNewFile", "BufReadPre" },
+		opts = {
+			enable = true,
+			multiwindow = false,
+			max_lines = 0,
+			min_window_height = 0,
+			line_numbers = true,
+			multiline_threshold = 20,
+			trim_scope = "outer",
+			mode = "cursor", -- ←ここはだいすけくんの好み次第でOK
+			separator = nil,
+			zindex = 20,
+			on_attach = nil,
+		},
+	},
 }
