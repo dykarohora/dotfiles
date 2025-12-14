@@ -11,9 +11,8 @@ return {
 		keymenu.set("n", "<leader>l", { desc = "LSP" })
 		keymenu.set("n", "<leader>o", { desc = "Overseer" })
 		keymenu.set("n", "<leader>p", { desc = "Overlook" })
-		keymenu.set("n", "<leader>p", { desc = "Search" })
-		keymenu.set("n", "<leader>w", { desc = "Write command" })
-		keymenu.set("n", "<leader>q", { desc = "Quit command" })
+		keymenu.set("n", "<leader>s", { desc = "Search" })
+		keymenu.set("n", "<leader>u", { desc = "No Neck Pain" })
 		keymenu.set("n", "<leader>x", { desc = "Explorer" })
 	end,
 }
