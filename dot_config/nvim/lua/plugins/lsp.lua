@@ -13,6 +13,10 @@ return {
 		"nvimdev/lspsaga.nvim",
 		config = function()
 			require("lspsaga").setup({
+				symbol_in_winber = {
+					enable = true,
+					folder_level = 20,
+				},
 				code_action = {
 					extend_gitsigns = true,
 				},
