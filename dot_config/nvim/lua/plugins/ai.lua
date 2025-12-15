@@ -9,7 +9,7 @@ return {
 				window = {
 					position = "vertical",
 				},
-				command = "~/.claude/local/claude",
+				command = "/opt/homebrew/bin/claude",
 			})
 			vim.keymap.set("n", "<leader>cc", "<Cmd>ClaudeCode<CR>")
 		end,
