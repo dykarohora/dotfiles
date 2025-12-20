@@ -71,6 +71,7 @@ return {
 					lua = { "stylua" },
 					go = { "goimports" },
 					bash = { "shfmt" },
+					rust = { "rustfmt" },
 					-- Web
 					typescript = web_formatter,
 					javascript = web_formatter,

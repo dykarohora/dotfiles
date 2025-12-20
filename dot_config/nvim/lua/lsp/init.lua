@@ -8,6 +8,7 @@ function M.setup()
 	local servers = {
 		"vtsls",
 		"lua_ls",
+		"rust_analyzer",
 	}
 
 	for _, name in ipairs(servers) do
