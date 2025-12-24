@@ -173,7 +173,7 @@ return {
 		},
 
 		opts = {
-			width = 100,
+			width = 160,
 			autocmds = {
 				skipEnteringNoNeckPainBuffer = true,
 				reloadOnColorSchemeChange = false,
