@@ -1,6 +1,4 @@
 ##### ==== PATH & 基本環境 ==== #####
-
-export PATH="$PATH:./node_modules/.bin"
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 export PATH="/usr/local/smlnj/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
@@ -160,3 +158,5 @@ function y() {
 
 # Git Graph
 alias gg="git-graph"
+
+bindkey -e
