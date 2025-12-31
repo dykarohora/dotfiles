@@ -43,7 +43,7 @@ export FZF_DEFAULT_OPTS="
 
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
 export FZF_CTRL_T_OPTS="
-  --preview 'bat --color=always --style=header,grid {}'
+  --preview 'bat --color=always --style=header,grid -- {q}'
   --preview-window=right:60%
 "
 
@@ -65,10 +65,22 @@ fpath=(
 
 
 ##### ==== 標準補完システム (compinit) ==== #####
+autoload -Uz compinit compaudit
 
-autoload -Uz compinit
-compinit
+ZCOMPDUMP_DIR="$HOME/.cache/zsh"
+mkdir -p "$ZCOMPDUMP_DIR"
+chmod 700 "$ZCOMPDUMP_DIR"
+ZCOMPDUMP="$ZCOMPDUMP_DIR/.zcompdump"
 
+_insecure=($(compaudit))
+if (( ${#_insecure} > 0 )); then
+  for p in "${_insecure[@]}"; do
+    fpath=(${fpath:#$p})
+  done
+fi
+unset _insecure
+
+compinit -d "$ZCOMPDUMP"
 
 ##### ==== fzf-tab (Tab 補完 → fzf UI) ==== #####
 
