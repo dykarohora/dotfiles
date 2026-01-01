@@ -187,4 +187,31 @@ return {
 			vim.keymap.set("n", "<leader>u-", "<cmd>NoNeckPainWidthDown<CR>", { desc = "NoNeckPain width down" })
 		end,
 	},
+	{
+		"Bekaboo/dropbar.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			-- fuzzy finder を使いたいなら（任意）
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+		config = function()
+			local api = require("dropbar.api")
+			vim.keymap.set("n", "<Leader>;", api.pick, { desc = "Pick symbols in winbar" })
+			vim.keymap.set("n", "[;", api.goto_context_start, { desc = "Go to start of current context" })
+			vim.keymap.set("n", "];", api.select_next_context, { desc = "Select next context" })
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		opts = {},
+		cmd = "Trouble",
+		keys = {
+			{ "<leader>tx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+			{ "<leader>tX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+			{ "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
+			{ "<leader>tl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP (Trouble)" },
+			{ "<leader>tL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+			{ "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+		},
+	},
 }

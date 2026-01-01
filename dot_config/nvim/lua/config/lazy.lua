@@ -38,8 +38,8 @@ require("lazy").setup({
 		{ import = "plugins.ai" },
 		{ import = "plugins.oil" },
 		{ import = "plugins.markdown" },
-		{ import = "plugins.debug" },
 		{ import = "plugins.keymenu" },
+		{ import = "plugins.action" },
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
