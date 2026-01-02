@@ -8,8 +8,8 @@ return {
 		end
 
 		return {
-			cmd = { "tsx" },
-			args = { file },
+			cmd = { "npx" },
+			args = { "--no-install", "tsx", file },
 			components = {
 				"default",
 				{
