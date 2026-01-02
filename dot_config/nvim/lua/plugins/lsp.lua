@@ -41,7 +41,6 @@ return {
 			})
 		end,
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
 		event = { "BufRead", "BufNewFile" },
@@ -240,5 +239,11 @@ return {
 				callback = apply_overlook_window_opts,
 			})
 		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {},
 	},
 }
