@@ -203,6 +203,7 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
+		event = "VeryLazy",
 		opts = {},
 		cmd = "Trouble",
 		keys = {
@@ -213,5 +214,11 @@ return {
 			{ "<leader>tL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
 			{ "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
 		},
+	},
+	{
+		"folke/todo-comments.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
 	},
 }
