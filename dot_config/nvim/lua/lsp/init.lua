@@ -9,6 +9,7 @@ function M.setup()
 		"vtsls",
 		"lua_ls",
 		"rust_analyzer",
+		"terraform_ls",
 	}
 
 	for _, name in ipairs(servers) do

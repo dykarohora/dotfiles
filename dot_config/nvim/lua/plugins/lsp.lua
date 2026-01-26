@@ -70,6 +70,9 @@ return {
 					go = { "goimports" },
 					bash = { "shfmt" },
 					rust = { "rustfmt" },
+					terraform = { "terraform_fmt" },
+					tf = { "terraform_fmt" },
+					hcl = { "terraform_fmt" },
 					-- Web
 					typescript = web_formatter,
 					javascript = web_formatter,
