@@ -14,5 +14,7 @@ return {
 		keymenu.set("n", "<leader>s", { desc = "Search" })
 		keymenu.set("n", "<leader>u", { desc = "No Neck Pain" })
 		keymenu.set("n", "<leader>x", { desc = "Explorer" })
+		keymenu.set("n", "<leader>t", { desc = "Neotest" })
+		keymenu.set("n", "<leader>T", { desc = "Trouble" })
 	end,
 }
