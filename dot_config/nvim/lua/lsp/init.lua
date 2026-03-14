@@ -10,6 +10,8 @@ function M.setup()
 		"lua_ls",
 		"rust_analyzer",
 		"terraform_ls",
+		"elp",
+		"basedpyright",
 	}
 
 	for _, name in ipairs(servers) do

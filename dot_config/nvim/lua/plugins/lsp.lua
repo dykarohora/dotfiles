@@ -73,6 +73,8 @@ return {
 					terraform = { "terraform_fmt" },
 					tf = { "terraform_fmt" },
 					hcl = { "terraform_fmt" },
+					erlang = { "erlfmt" },
+					python = { "ruff_fix", "ruff_format" },
 					-- Web
 					typescript = web_formatter,
 					javascript = web_formatter,
