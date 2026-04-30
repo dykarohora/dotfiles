@@ -5,6 +5,7 @@ return {
 		{ "<leader>oa", "<CMD>OverseerRun<CR>", desc = "Run" },
 		{ "<leader>ob", "<CMD>OverseerToggle<CR>", desc = "Toggle" },
 		{ "<leader>oc", desc = "Run cpp" },
+		{ "<leader>og", desc = "Run go" },
 		{ "<leader>ot", desc = "Run by tsx" },
 	},
 	config = function()
@@ -13,6 +14,7 @@ return {
 				"builtin",
 				"user.tsx",
 				"user.cpp",
+				"user.go",
 			},
 			task_list = {
 				direction = "bottom",
@@ -62,5 +64,19 @@ return {
 		end
 
 		vim.keymap.set("n", "<leader>oc", run_cpp_split, { desc = "Run C++ with split" })
+
+		local function run_go_split()
+			if vim.bo.filetype ~= "go" then
+				vim.notify("Not a Go file", vim.log.levels.WARN)
+				return
+			end
+
+			vim.cmd("write")
+
+			local overseer = require("overseer")
+			overseer.run_template({ name = "go" })
+		end
+
+		vim.keymap.set("n", "<leader>og", run_go_split, { desc = "Run Go with split" })
 	end,
 }

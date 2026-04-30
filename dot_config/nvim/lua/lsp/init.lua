@@ -12,6 +12,7 @@ function M.setup()
 		"terraform_ls",
 		"elp",
 		"basedpyright",
+		"gopls",
 	}
 
 	for _, name in ipairs(servers) do

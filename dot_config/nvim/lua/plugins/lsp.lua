@@ -67,7 +67,7 @@ return {
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					go = { "goimports" },
+					go = { "goimports", "golangci_lint" },
 					bash = { "shfmt" },
 					rust = { "rustfmt" },
 					terraform = { "terraform_fmt" },
@@ -248,7 +248,9 @@ return {
 	{
 		"windwp/nvim-ts-autotag",
 		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		dependencies = {
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 		opts = {},
 	},
 }
