@@ -136,6 +136,9 @@ return {
 			map("n", "]m", goto_next_cell, { desc = "Next Notebook Cell", silent = true })
 			map("n", "[m", goto_prev_cell, { desc = "Prev Notebook Cell", silent = true })
 
+			vim.g.molten_auto_open_output = true
+			vim.g.molten_output_win_max_height = 40
+
 			vim.api.nvim_create_autocmd("BufReadPost", {
 				group = group,
 				pattern = "*.ipynb",
