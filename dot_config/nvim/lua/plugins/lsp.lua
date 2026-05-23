@@ -95,6 +95,52 @@ return {
 					lsp_format = "fallback",
 				},
 			})
+
+			local tflint_ns = vim.api.nvim_create_namespace("tflint")
+			local severity_map = {
+				error = vim.diagnostic.severity.ERROR,
+				warning = vim.diagnostic.severity.WARN,
+				notice = vim.diagnostic.severity.INFO,
+			}
+
+			vim.api.nvim_create_autocmd("BufWritePost", {
+				pattern = { "*.tf", "*.hcl" },
+				callback = function(ev)
+					local bufnr = ev.buf
+					vim.diagnostic.reset(tflint_ns, bufnr)
+					local fname = vim.api.nvim_buf_get_name(bufnr)
+					vim.fn.jobstart({ "tflint", "--format=json", fname }, {
+						stdout_buffered = true,
+						on_stdout = function(_, data)
+							if not data or #data == 0 then
+								return
+							end
+							local raw = table.concat(data, "")
+							if raw == "" then
+								return
+							end
+							local ok, result = pcall(vim.json.decode, raw)
+							if not ok or not result or not result.issues then
+								return
+							end
+							local diags = {}
+							for _, issue in ipairs(result.issues) do
+								local r = issue.range
+								table.insert(diags, {
+									lnum = r.start.line - 1,
+									col = r.start.column - 1,
+									end_lnum = r["end"].line - 1,
+									end_col = r["end"].column - 1,
+									severity = severity_map[issue.rule.severity] or vim.diagnostic.severity.WARN,
+									message = issue.message,
+									source = "tflint",
+								})
+							end
+							vim.diagnostic.set(tflint_ns, bufnr, diags)
+						end,
+					})
+				end,
+			})
 		end,
 	},
 	{
