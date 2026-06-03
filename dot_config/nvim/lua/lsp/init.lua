@@ -13,6 +13,7 @@ function M.setup()
 		"elp",
 		"basedpyright",
 		"gopls",
+		"biome",
 	}
 
 	for _, name in ipairs(servers) do
