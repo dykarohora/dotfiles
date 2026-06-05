@@ -35,7 +35,6 @@ require("lazy").setup({
 		{ import = "plugins.overseer" },
 		{ import = "plugins.git" },
 		{ import = "plugins.terminal" },
-		{ import = "plugins.ai" },
 		{ import = "plugins.oil" },
 		{ import = "plugins.markdown" },
 		{ import = "plugins.keymenu" },

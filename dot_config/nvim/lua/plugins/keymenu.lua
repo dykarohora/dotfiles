@@ -5,7 +5,6 @@ return {
 
 		local keymenu = require("key-menu")
 		keymenu.set("n", "<leader>")
-		keymenu.set("n", "<leader>c", { desc = "Claude Code" })
 		keymenu.set("n", "<leader>f", { desc = "File" })
 		keymenu.set("n", "<leader>g", { desc = "Git" })
 		keymenu.set("n", "<leader>l", { desc = "LSP" })
